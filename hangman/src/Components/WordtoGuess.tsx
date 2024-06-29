@@ -1,11 +1,9 @@
 type WordtoGuessType = {
-    word: string
-}
+    word: string;
+    guessedLetter: Array<string>; // or you can use guessedLetter: string[];
+};
 
-const WordtoGuess = () => {
-    const word = "test"
-    const guessedLetter = ["t", "e", "g"]
-
+const WordtoGuess = ({word, guessedLetter} : WordtoGuessType) => {
     return <div style={{display: "flex",
         gap: ".25em",
         fontSize: "6rem",

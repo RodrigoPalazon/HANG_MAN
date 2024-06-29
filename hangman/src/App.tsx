@@ -12,9 +12,11 @@ const [wordToGuess, setWordToGuess] = useState(() => {
 
 const [endOfTheGame, setEndOfTheGame] = useState<boolean>(false)
 
-const [guessedLettersList, setGuessedLetters] = useState<string[]>([]);
+const [guessedLetters, setGuessedLetters] = useState<string[]>(["a","e","z"]);
 
-const incorrectLetters = guessedLettersList.filter((letter) => (!wordToGuess.includes(letter)));
+const incorrectLetters = guessedLetters.filter((letter) => (!wordToGuess.includes(letter)));
+
+console.log(`Incorrect letters: ${incorrectLetters}`)
 
     return (
         <div style={{
@@ -29,7 +31,7 @@ const incorrectLetters = guessedLettersList.filter((letter) => (!wordToGuess.inc
             
             <Message endOfTheGame = {endOfTheGame}/>
             <Hangman numberOfGuesses = {incorrectLetters.length}/>
-            <WordtoGuess word={wordToGuess}/>
+            <WordtoGuess word={wordToGuess} guessedLetter={guessedLetters}/>
             <div style = {{alignSelf: "stretch"}}>
                 <Keyboard/>
             </div>
