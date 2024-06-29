@@ -92,11 +92,11 @@ const HEAD = (
   }
   
 
-const Hangman = (props: HangmanDrawingProps) => {
+const Hangman = ({numberOfGuesses}: HangmanDrawingProps) => {
 
     return (
         <div style={{ position: "relative" }}>
-        {BODY_PARTS.slice(0, props.numberOfGuesses)}
+        {BODY_PARTS.slice(0, numberOfGuesses)}
         <div
           style={{
             height: "50px",

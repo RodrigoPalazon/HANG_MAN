@@ -14,6 +14,7 @@ const [endOfTheGame, setEndOfTheGame] = useState<boolean>(false)
 
 const [guessedLettersList, setGuessedLetters] = useState<string[]>([]);
 
+const incorrectLetters = guessedLettersList.filter((letter) => (!wordToGuess.includes(letter)));
 
     return (
         <div style={{
@@ -22,15 +23,16 @@ const [guessedLettersList, setGuessedLetters] = useState<string[]>([]);
             flexDirection: "column",
             gap: "2em",
             margin: "0 auto",
-            alignItems: "center",
-            backgroundColor: "pink"
+            alignItems: "center"
         }}
         >
             
             <Message endOfTheGame = {endOfTheGame}/>
-            <Hangman numberOfGuesses = {guessedLettersList.length}/>
+            <Hangman numberOfGuesses = {incorrectLetters.length}/>
             <WordtoGuess word={wordToGuess}/>
-            <Keyboard/>
+            <div style = {{alignSelf: "stretch"}}>
+                <Keyboard/>
+            </div>
       </div>
     )
 }
