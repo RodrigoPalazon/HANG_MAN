@@ -24,12 +24,12 @@ function addGuessedLetter(letter: string) {
 
 
 useEffect(()=>{
-    const handler = (e: KeyboardEvent) => {
-        const key = e.key
+    const handler = (event: KeyboardEvent) => {
+        const key = event.key
 
         if (!key.match(/^[a-z]$/)) return
 
-        e.preventDefault()
+        event.preventDefault()
         addGuessedLetter(key)
     }
     document.addEventListener("keypress",handler)
@@ -37,7 +37,7 @@ useEffect(()=>{
     return () => {
         document.removeEventListener("keypress",handler)
     }
-}, []);
+}, [guessedLetters]);
 
 
     return (
