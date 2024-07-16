@@ -1,14 +1,13 @@
 type MessageProps = {
-    endOfTheGame: boolean;
+    result: boolean;
   }
   
 
-function Message (props : MessageProps){
-    return <>
-            <p>
-                {props.endOfTheGame ? `Try another letter` : `End of The Game`}
-            </p>
-        </>
+function Message ({result} : MessageProps){
+    return <div style = {{fontSize : "2rem", textAlign: "center"}}>
+                {result == true && "Winner ! - Refresh to try again"}
+                {result == false && "Nice try ! - Refresh to try again"}
+        </div>
 }
 
 export default Message;
