@@ -8,15 +8,25 @@ const handleClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     // Perform any additional actions with the innerText
   };
 
-const Keyboard =  () => {
+type KeyboardProps = {
+    activeLetter: string[], 
+    inactiveLetters: string[], 
+    addGuessedLetter: (letter: string) => void
+}
 
-    return <div style={{display: "flex",
-                        flexWrap: "wrap",
-                        gap: ".2em",
-                        fontSize: "2em"
+const Keyboard =  ({activeLetter, inactiveLetters, addGuessedLetter} : KeyboardProps) => {
+
+    return <div style={{display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
+                        gap: ".5rem",
+                        
     }}>
-        {alphabet.map((letter) => {
-            return <button className= {styles.btn} onClick={(handleClick)} >{letter}</button>
+        {alphabet.map((key) => {
+            return <button className= {`${styles.btn}`} 
+                            onClick={() => addGuessedLetter(key)} 
+                            key={key}>
+                                {key}
+                    </button>
         })}
     </div>
 }
